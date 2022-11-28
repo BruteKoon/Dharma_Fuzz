@@ -1,0 +1,23 @@
+<DOCTYPE html>
+<html>
+<head>
+<script>
+        function testcase() {
+                var AudioBuffer1 = new AudioContext().createBuffer(2,22050, 44100);
+var AudioBuffer2 = new AudioContext().createBuffer(2,22050, 44100);
+var AudioBuffer3 = new AudioContext().createBuffer(2,22050, 44100);
+
+var CrushObject1 = {foo1: 1, foo2: 2}
+
+try {AudioBuffer1.getChannelData(0)} catch(e){}
+try {AudioBuffer2.copyFromChannel(CrushObject1, 1, 0)} catch(e){}
+try {AudioBuffer3.copyToChannel(CrushObject1, 1, 0)} catch(e){}
+try {AudioBuffer1.copyFromChannel(CrushObject1, 1, 0)} catch(e){}
+
+        }
+</script>
+</head>
+<body onload="testcase()">
+<h1> test Page </h1>
+</body>
+</html>

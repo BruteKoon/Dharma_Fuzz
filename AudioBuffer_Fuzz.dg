@@ -1,0 +1,45 @@
+%%% #######################################
+%section% := value
+
+
+Wrapper :=
+   !ArrayBuffer!
+   !AudioBuffer!.+AudioBuffer_Method+
+   !AudioBuffer!.+Crush_Method+
+
+getChannelData_argv :=
+   0
+   1
+
+Crush_Method :=
+   copyFromChannel(!CrushObject!, %range%(0-1), 0)
+   copyToChannel(!CrushObject!, %range%(0-1), 0)
+   
+
+AudioBuffer_Method :=
+   getChannelData(+getChannelData_argv+)
+   copyFromChannel(!ArrayBuffer!, %range%(0-1), 0)
+   copyToChannel(!ArrayBuffer!, %range%(0-1), 0)
+
+Array_length :=
+   %range%(0-100000)
+
+
+%%% ########################################
+%section% := variable
+
+AudioBuffer :=
+   var @AudioBuffer@ = new AudioContext().createBuffer(2,22050, 44100);
+
+ArrayBuffer :=
+   var @ArrayBuffer@ = new Float32Array(+Array_length+)
+
+
+CrushObject :=
+   var @CrushObject@ = {foo1: 1, foo2: 2}
+
+%%% #######################################
+%section% := variance
+
+main :=
+   try {+Wrapper+} catch(e){}

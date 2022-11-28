@@ -1,0 +1,22 @@
+<DOCTYPE html>
+<html>
+<head>
+<script>
+        function testcase() {
+                var AudioBuffer1 = new AudioContext().createBuffer(2,22050, 44100);
+var AudioBuffer2 = new AudioContext().createBuffer(2,22050, 44100);
+
+var ArrayBuffer1 = new Float32Array(21919)
+var ArrayBuffer2 = new Float32Array(80127)
+
+try {AudioBuffer1.copyFromChannel(ArrayBuffer1, 0, 0)} catch(e){}
+try {AudioBuffer2.getChannelData(1)} catch(e){}
+try {AudioBuffer1.copyFromChannel(ArrayBuffer2, 1, 0)} catch(e){}
+
+        }
+</script>
+</head>
+<body onload="testcase()">
+<h1> test Page </h1>
+</body>
+</html>

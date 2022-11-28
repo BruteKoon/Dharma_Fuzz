@@ -1,0 +1,20 @@
+<DOCTYPE html>
+<html>
+<head>
+<script>
+        function testcase() {
+                var AudioBuffer1 = new AudioContext().createBuffer(2,22050, 44100);
+var AudioBuffer2 = new AudioContext().createBuffer(2,22050, 44100);
+
+var CrushObject1 = {foo1: 1, foo2: 2}
+
+try {AudioBuffer1.copyToChannel(CrushObject1, 1, 0)} catch(e){}
+try {AudioBuffer2.getChannelData(1)} catch(e){}
+
+        }
+</script>
+</head>
+<body onload="testcase()">
+<h1> test Page </h1>
+</body>
+</html>
